@@ -1,0 +1,16 @@
+.input-field {
+  width: 354px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid #b3cdf8;
+  padding-left: 16px;
+  outline: none;
+  color: #333333;
+}
+input[type="text"] {
+  font-size: 15px;
+}
+.input-field::placeholder {
+  font-size: 15px;
+  color: #9f9f9f;
+}

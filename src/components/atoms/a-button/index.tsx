@@ -18,7 +18,7 @@ export const Button: React.FC<IButton> = ({
 }) => {
   let classNames: string[] = ["button"];
 
-  // const [isEnable, setState] = useState('')
+  // const [isHover, setHover] = useState<boolean>(true)
 
   if (hover) {
     classNames.push("button__state--hover");
