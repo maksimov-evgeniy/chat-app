@@ -26,6 +26,7 @@ export const Button: React.FC<IButton> = ({
   if (active) {
     classNames.push("button__state--active");
   }
+
   return (
     <button
       className={classNames.join(" ")}
