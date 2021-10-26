@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
+import cn from "classnames";
 
 interface IButton {
   buttonText: string;
@@ -7,6 +8,7 @@ interface IButton {
   disabled?: boolean;
   active?: boolean;
   hover?: boolean;
+  className?: string;
 }
 
 export const Button: React.FC<IButton> = ({
@@ -15,24 +17,17 @@ export const Button: React.FC<IButton> = ({
   disabled,
   active,
   hover,
+  className
 }) => {
-  let classNames: string[] = ["button"];
-
-  // const [isHover, setHover] = useState<boolean>(true)
-
-  if (hover) {
-    classNames.push("button__state--hover");
-  }
-  if (active) {
-    classNames.push("button__state--active");
-  }
+  let classNames = cn(
+    "button",
+    { "button__state--active": active },
+    { "button__state--hover": hover },
+    className
+  );
 
   return (
-    <button
-      className={classNames.join(" ")}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button className={classNames} onClick={onClick} disabled={disabled}>
       {buttonText}
     </button>
   );

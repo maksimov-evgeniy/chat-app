@@ -1,16 +1,25 @@
 import React from "react";
 import "./style.css";
-import { InputField } from "../../atoms/inputField";
-import { InputLabel } from "../../atoms/inputLabel";
-import { StateLabel } from "../../atoms/stateLabel/";
+import { InputField } from "../../atoms/InputField";
+import { InputLabel } from "../../atoms/InputLabel";
 
-export const InputFull: React.FC = () => {
+interface IInputFull {
+  text: string;
+  placeholder: string;
+  type: string;
+}
+
+export const InputFull: React.FC<IInputFull> = ({
+  text,
+  placeholder,
+  type
+}) => {
   return (
     <div className="input-full">
       <div className="input-full__state-label"></div>
       <div className="input-full__input">
-        <InputLabel text="Name" />
-        <InputField placeholder="Input user name" type="text" />
+        <InputLabel text={text} />
+        <InputField placeholder={placeholder} type={type} />
       </div>
     </div>
   );
