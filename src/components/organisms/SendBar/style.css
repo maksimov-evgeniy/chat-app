@@ -1,0 +1,12 @@
+.send-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  height: 80px;
+}
+.send-bar__button-clip {
+  margin: 0 25px;
+}
+.send-bar__button-letter {
+  margin: 0 25px;
+}

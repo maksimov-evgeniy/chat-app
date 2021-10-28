@@ -5,16 +5,51 @@
   justify-content: space-between;
 }
 .login-template__login {
-  width: 716px;
-  height: 100%;
   padding: 256px 0 0 121px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 716px;
+  flex-shrink: 2;
 }
 .login-template__picture {
-  width: 724px;
-  height: 100%;
   background-image: url("./bg-template.png");
   background-color: #eff5ff;
+  display: flex;
+  flex-basis: 724px;
+  flex-shrink: 4;
 }
 .login-template__wellcome-wrap {
   margin-bottom: 53px;
+}
+
+@media (max-width: 1235px) {
+  .login-template__login {
+    padding-left: 50px;
+  }
+}
+@media (max-width: 930px) {
+  .welcome-text__title {
+    font-size: 27px;
+  }
+  .welcome-text__subtitle {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .welcome-text__logo {
+    max-width: 84px;
+  }
+  .form .input-field {
+    width: 348px;
+    height: 48px;
+  }
+}
+@media (max-width: 680px) {
+  .login-template__picture {
+  }
+  .login-template {
+    flex-direction: column-reverse;
+  }
+  .login-template__login {
+    padding: 0;
+  }
 }

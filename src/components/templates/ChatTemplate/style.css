@@ -1,3 +1,6 @@
+.chat-template {
+  height: 100vh;
+}
 .chat-template__content {
   display: flex;
 }
@@ -6,18 +9,22 @@
 }
 .chat-template__users {
   flex-basis: 361px;
-  height: 100vh;
-
   padding-top: 18px;
   border-right: 1px solid #88abe3;
 }
 .chat-template__dialog {
   flex-basis: 1079px;
   flex-shrink: 3;
-  height: 100vh;
   background: url("./chat-bg.svg") no-repeat;
   background-color: #eff5ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .chat-template_user {
   margin-bottom: 8px;
+}
+.chat-template__content {
+  height: calc(100% - 80px);
+  display: flex;
 }

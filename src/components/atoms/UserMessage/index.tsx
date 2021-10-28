@@ -3,12 +3,15 @@ import "./style.css";
 import cn from "classnames";
 
 interface IUserMessage {
-  text: string;
+  userMessage: string;
   className?: string;
 }
 
-export const UserMessage: React.FC<IUserMessage> = ({ text, className }) => {
+export const UserMessage: React.FC<IUserMessage> = ({
+  userMessage,
+  className
+}) => {
   let classNames = cn("user-message", className);
 
-  return <p className={classNames}>{text}</p>;
+  return <p className={classNames}>{userMessage}</p>;
 };

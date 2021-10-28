@@ -8,7 +8,7 @@ import { LoginPage } from "../components/pages/LoginPage";
 export const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route path={SCREENS.SCREEN_LOGIN}>
+      <Route path={[SCREENS.SCREEN_LOGIN, SCREENS.SCREEN_MAIN]} exact>
         <LoginPage />
       </Route>
       <Route path={SCREENS.SCREEN_CHAT}>

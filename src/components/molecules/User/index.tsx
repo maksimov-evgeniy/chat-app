@@ -7,9 +7,11 @@ import { UserMessage } from "../../atoms/UserMessage";
 
 interface IUser {
   className?: string;
+  userName: string;
+  userMessage: string;
 }
 
-export const User: React.FC<IUser> = ({ className }) => {
+export const User: React.FC<IUser> = ({ className, userName, userMessage }) => {
   let classNames = cn("user", className);
   return (
     <div className={classNames}>
@@ -17,8 +19,8 @@ export const User: React.FC<IUser> = ({ className }) => {
         <UserAvatar />
       </div>
       <div className="user__info">
-        <UserName text="Marina Joe" className="user__user-name" />
-        <UserMessage text="Sed ut perspiciatis" />
+        <UserName userName={userName} className="user__user-name" />
+        <UserMessage userMessage={userMessage} />
       </div>
     </div>
   );

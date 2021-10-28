@@ -1,0 +1,13 @@
+.textarea {
+  height: 26px;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: "montserrat";
+  font-size: 16px;
+}
+
+.textarea::placeholder {
+  color: #cacaca;
+}
