@@ -51,5 +51,10 @@
   }
   .login-template__login {
     padding: 0;
+    align-items: center;
+    padding: 0 13px;
+  }
+  .form .form__button {
+    width: 347px;
   }
 }
