@@ -4,11 +4,11 @@ import "./style.css";
 interface IInputField {
   placeholder: string;
   type: string;
-  // onChange: (value: string) => void,
+  name?: string;
 }
 
 export const InputField: React.FC<IInputField> = ({ placeholder, type }) => {
   return (
-    <input type="text" placeholder={placeholder} className="input-field" />
+    <input type={type} placeholder={placeholder} className="input-field" />
   );
 };

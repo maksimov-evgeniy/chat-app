@@ -19,7 +19,7 @@ dd {
   margin: 0;
 }
 h1 {
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 800;
   margin: ;
 }
@@ -29,6 +29,10 @@ h2 {
 }
 h3 {
   font-size: 27px;
+  font-weight: 700;
+}
+h4 {
+  font-size: 15px;
   font-weight: 700;
 }
 

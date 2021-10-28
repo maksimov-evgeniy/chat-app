@@ -9,6 +9,7 @@ interface IButton {
   active?: boolean;
   hover?: boolean;
   className?: string;
+  type?: string;
 }
 
 export const Button: React.FC<IButton> = ({
@@ -17,7 +18,8 @@ export const Button: React.FC<IButton> = ({
   disabled,
   active,
   hover,
-  className
+  className,
+  type
 }) => {
   let classNames = cn(
     "button",
