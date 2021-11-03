@@ -9,7 +9,7 @@ interface IButton {
   active?: boolean;
   hover?: boolean;
   className?: string;
-  type?: string;
+  type?: any;
 }
 
 export const Button: React.FC<IButton> = ({
@@ -29,7 +29,12 @@ export const Button: React.FC<IButton> = ({
   );
 
   return (
-    <button className={classNames} onClick={onClick} disabled={disabled}>
+    <button
+      className={classNames}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+    >
       {buttonText}
     </button>
   );
