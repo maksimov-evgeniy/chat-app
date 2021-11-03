@@ -8,10 +8,12 @@ export const LoginTemplate: React.FC = () => {
     <React.Fragment>
       <div className="login-template">
         <div className="login-template__login">
-          <div className="login-template__wellcome-wrap">
-            <WelcomeText />
+          <div className="login-tamplate__login-inner">
+            <div className="login-template__wellcome-wrap">
+              <WelcomeText />
+            </div>
+            <Form />
           </div>
-          <Form />
         </div>
         <div className="login-template__picture"></div>
       </div>

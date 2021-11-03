@@ -5,27 +5,29 @@
   justify-content: space-between;
 }
 .login-template__login {
-  padding: 256px 0 0 121px;
   display: flex;
   flex-direction: column;
-  flex-basis: 716px;
-  flex-shrink: 2;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 50%;
+  flex-shrink: 1;
 }
+
 .login-template__picture {
-  background-image: url("./bg-template.png");
+  background-image: url("./bg-template.svg");
+  background-size: cover;
   background-color: #eff5ff;
   display: flex;
-  flex-basis: 724px;
-  flex-shrink: 4;
+  flex-basis: 50%;
+  flex-shrink: 1;
 }
 .login-template__wellcome-wrap {
   margin-bottom: 53px;
 }
-
+.form {
+  margin: 0 auto;
+}
 @media (max-width: 1235px) {
-  .login-template__login {
-    padding-left: 50px;
-  }
 }
 @media (max-width: 930px) {
   .welcome-text__title {
@@ -43,8 +45,9 @@
     height: 48px;
   }
 }
-@media (max-width: 680px) {
+@media (max-width: 750px) {
   .login-template__picture {
+    border-radius: 0 0px 16px 16px;
   }
   .login-template {
     flex-direction: column-reverse;
@@ -56,5 +59,12 @@
   }
   .form .form__button {
     width: 347px;
+  }
+  .login-template__wellcome-wrap {
+    position: absolute;
+    top: -230px;
+  }
+  .login-tamplate__login-inner {
+    position: relative;
   }
 }

@@ -8,14 +8,15 @@
   border-bottom: 1px solid #88abe3;
 }
 .chat-template__users {
-  flex-basis: 361px;
+  width: 30%;
   padding-top: 18px;
   border-right: 1px solid #88abe3;
 }
 .chat-template__dialog {
-  flex-basis: 1079px;
+  width: 70%;
   flex-shrink: 3;
   background: url("./chat-bg.svg") no-repeat;
+  background-size: cover;
   background-color: #eff5ff;
   display: flex;
   flex-direction: column;
