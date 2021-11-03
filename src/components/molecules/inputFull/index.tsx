@@ -10,7 +10,7 @@ interface IInputFull {
   type: string;
   className?: string;
   name?: string;
-  value: string;
+
   onChange?(): void;
 }
 
@@ -19,7 +19,7 @@ export const InputFull: React.FC<IInputFull> = ({
   placeholder,
   type,
   className,
-  value,
+  name,
   onChange
 }) => {
   let classNames = cn("input-full", className);
@@ -29,7 +29,7 @@ export const InputFull: React.FC<IInputFull> = ({
       <InputField
         placeholder={placeholder}
         type={type}
-        value={value}
+        name={name}
         onChange={onChange}
       />
     </div>

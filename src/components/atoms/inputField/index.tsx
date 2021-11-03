@@ -5,14 +5,14 @@ interface IInputField {
   placeholder: string;
   type: string;
   name?: string;
-  value: string;
+
   onChange?(): void;
 }
 
 export const InputField: React.FC<IInputField> = ({
   placeholder,
   type,
-  value,
+
   onChange
 }) => {
   return (
@@ -20,7 +20,6 @@ export const InputField: React.FC<IInputField> = ({
       type={type}
       placeholder={placeholder}
       className="input-field"
-      value={value}
       onChange={onChange}
     />
   );
