@@ -3,32 +3,55 @@ import "./style.css";
 import { InputFull } from "../../molecules/InputFull";
 import { Button } from "../../atoms/Button";
 import { useHistory } from "react-router-dom";
+import { useFormik, Formik } from "formik";
 
-export const Form: React.FC = () => {
-  let history: any = useHistory();
+interface Values {
+  name: string;
+  password: string;
+}
 
-  let isValid: boolean = true; // предположим, что форма валидна
+export const Form: React.FC = ({}) => {
+  //let history: any = useHistory();
 
-  function myRed(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    return isValid ? history.push("/chat") : NaN;
-  }
+  // let isValid: boolean = true; // предположим, что форма валидна
+
+  // function myRed(event: React.FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
+  //   return isValid ? history.push("/chat") : NaN;
+  // }
 
   return (
-    <form
-      className="form"
-      onSubmit={(event) => {
-        myRed(event);
+    <Formik
+      initialValues={{
+        name: "",
+        password: ""
+      }}
+      onSubmit={(values: Values) => {
+        alert(JSON.stringify(values));
       }}
     >
-      <InputFull
-        type="text"
-        placeholder="Input user name"
-        text="User name"
-        className="form__input"
-      />
-      <InputFull type="password" placeholder="Input password" text="Password" />
-      <Button buttonText="Log In" className="form__button" type="submit" />
-    </form>
+      {({ handleSubmit, handleChange, values }) => (
+        <form className="form" onSubmit={handleSubmit}>
+          <InputFull
+            type="text"
+            placeholder="Input user name"
+            text="User name"
+            className="form__input"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+          />
+          <InputFull
+            type="password"
+            placeholder="Input password"
+            text="Password"
+            name="password"
+            value={values.password}
+            onChange={handleChange}
+          />
+          <Button buttonText="Log In" className="form__button" type="submit" />
+        </form>
+      )}
+    </Formik>
   );
 };

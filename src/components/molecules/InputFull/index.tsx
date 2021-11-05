@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import cn from "classnames";
 import "./style.css";
 import { InputField } from "../../atoms/InputField";
@@ -10,8 +10,9 @@ interface IInputFull {
   type: string;
   className?: string;
   name?: string;
-
-  onChange?(): void;
+  onBlur?(e: ChangeEvent<any>): void;
+  onChange?(e: ChangeEvent<any>): void;
+  value?: string;
 }
 
 export const InputFull: React.FC<IInputFull> = ({
@@ -20,7 +21,9 @@ export const InputFull: React.FC<IInputFull> = ({
   type,
   className,
   name,
-  onChange
+  onBlur,
+  onChange,
+  value
 }) => {
   let classNames = cn("input-full", className);
   return (
@@ -31,6 +34,8 @@ export const InputFull: React.FC<IInputFull> = ({
         type={type}
         name={name}
         onChange={onChange}
+        onBlur={onBlur}
+        value={value}
       />
     </div>
   );

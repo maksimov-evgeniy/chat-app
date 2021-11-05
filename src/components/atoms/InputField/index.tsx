@@ -1,19 +1,22 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import "./style.css";
 
 interface IInputField {
   placeholder: string;
   type: string;
   name?: string;
-
-  onChange?(): void;
+  onChange?(e: ChangeEvent<any>): void;
+  onBlur?(e: ChangeEvent<any>): void;
+  value?: string;
 }
 
 export const InputField: React.FC<IInputField> = ({
   placeholder,
   type,
-
-  onChange
+  onBlur,
+  onChange,
+  name,
+  value
 }) => {
   return (
     <input
@@ -21,6 +24,9 @@ export const InputField: React.FC<IInputField> = ({
       placeholder={placeholder}
       className="input-field"
       onChange={onChange}
+      onBlur={onBlur}
+      name={name}
+      value={value}
     />
   );
 };
