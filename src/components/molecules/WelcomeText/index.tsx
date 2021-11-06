@@ -4,19 +4,35 @@ import "./style.css";
 import { Typography } from "../../atoms/Typography";
 import { Logo } from "../../atoms/Logo";
 
-export const WelcomeText: React.FC = () => {
+interface IWelcomeText {
+  titleType: string;
+  subTitleType: string;
+  titleText: string;
+  subTitleText: string;
+  titleClass?: string;
+  subTitleClass?: string;
+}
+
+export const WelcomeText: React.FC<IWelcomeText> = ({
+  titleType,
+  subTitleType,
+  titleText,
+  subTitleText,
+  titleClass,
+  subTitleClass
+}) => {
   return (
     <div className="welcome-text">
       <Logo className="welcome-text__logo" />
       <Typography
-        type="h1"
-        text="Wellcome to Chatty!"
+        type={titleType}
+        text={titleText}
         className="welcome-text__title"
       />
       <Typography
-        type="h2"
-        text="Please, autorize yourself"
-        className="welcome-text__subtitle"
+        type={subTitleType}
+        text={subTitleText}
+        className={subTitleClass}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import cn from "classnames";
 import "./style.css";
 import { InputField } from "../../atoms/InputField";
 import { InputLabel } from "../../atoms/InputLabel";
-
+import { Formik, FormikErrors } from "formik";
 interface IInputFull {
   text: string;
   placeholder: string;

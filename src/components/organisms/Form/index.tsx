@@ -3,8 +3,9 @@ import "./style.css";
 import { InputFull } from "../../molecules/InputFull";
 import { Button } from "../../atoms/Button";
 import { useHistory } from "react-router-dom";
-import { useFormik, Formik } from "formik";
-
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { trace } from "console";
 interface Values {
   name: string;
   password: string;
@@ -26,29 +27,59 @@ export const Form: React.FC = ({}) => {
         name: "",
         password: ""
       }}
-      onSubmit={(values: Values) => {
-        alert(JSON.stringify(values));
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .max(15, "Must be 15 characters or less")
+          .required("Required"),
+        password: Yup.string()
+          .max(20, "Must be 20 characters or less")
+          .required("Required")
+      })}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+
+          setSubmitting(false);
+        }, 400);
       }}
     >
-      {({ handleSubmit, handleChange, values }) => (
+      {({
+        handleSubmit,
+        handleChange,
+        values,
+        touched,
+        errors,
+        isValid,
+        dirty
+      }) => (
         <form className="form" onSubmit={handleSubmit}>
-          <InputFull
-            type="text"
-            placeholder="Input user name"
-            text="User name"
-            className="form__input"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-          />
-          <InputFull
-            type="password"
-            placeholder="Input password"
-            text="Password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-          />
+          <div className="form__input">
+            <InputFull
+              type="text"
+              placeholder="Input user name"
+              text="User name"
+              name="name"
+              value={values.name}
+              onChange={handleChange}
+            />
+            {touched.name && errors.name ? (
+              <div className="form__error">{errors.name}</div>
+            ) : null}
+          </div>
+
+          <div className="form__input">
+            <InputFull
+              type="password"
+              placeholder="Input password"
+              text="Password"
+              name="password"
+              value={values.password}
+              onChange={handleChange}
+            />
+            {touched.password && errors.password ? (
+              <div className="form__error">{errors.password}</div>
+            ) : null}
+          </div>
           <Button buttonText="Log In" className="form__button" type="submit" />
         </form>
       )}
