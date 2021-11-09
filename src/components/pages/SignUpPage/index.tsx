@@ -3,6 +3,7 @@ import "./style.css";
 
 import { LoginTemplate } from "../../templates/LoginTemplate";
 import { WelcomeText } from "../../molecules/WelcomeText";
+import { FormSignUp } from "../../organisms/FormSignUp";
 
 export const SignUpPage: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const SignUpPage: React.FC = () => {
             titleText="Sign Up to Chatty!"
             subTitleText="Registration"
           />
+          <FormSignUp />
         </LoginTemplate>
       </div>
     </React.Fragment>
