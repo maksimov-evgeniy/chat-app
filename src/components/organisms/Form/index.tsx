@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { InputFull } from "../../molecules/InputFull";
 import { Button } from "../../atoms/Button";
@@ -6,65 +6,85 @@ import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { trace } from "console";
-
+import { SecurityCode } from "./../../molecules/SecurityCode";
 interface Values {
-  name: string;
+  login: string;
   password: string;
+  captcha: string;
 }
 
 export const Form: React.FC = ({}) => {
-  //let history: any = useHistory();
+  let history: any = useHistory();
 
-  // let isValid: boolean = true; // предположим, что форма валидна
+  function relocate(event: any) {
+    event.preventDefault();
+    return history.push("/registration");
+  }
 
-  // function myRed(event: React.FormEvent<HTMLFormElement>) {
-  //   event.preventDefault();
-  //   return isValid ? history.push("/chat") : NaN;
-  // }
+  const [captcha, setCaptcha] = useState<string>("");
+  const [trigger, setTrigger] = useState<number>(0);
+
+  useEffect(() => {
+    const getCaptha = async () => {
+      const response = await fetch(
+        "http://109.194.37.212:93/api/auth/captcha" +
+          "?t=" +
+          new Date().getTime()
+      );
+      setCaptcha(response.url);
+    };
+    getCaptha();
+  }, [trigger]);
 
   return (
     <Formik
       initialValues={{
-        name: "",
-        password: ""
+        login: "",
+        password: "",
+        captcha: ""
       }}
       validationSchema={Yup.object({
-        name: Yup.string()
+        login: Yup.string()
           .max(15, "Must be 15 characters or less")
           .required("Required"),
         password: Yup.string()
           .max(20, "Must be 20 characters or less")
+          .required("Required"),
+        captcha: Yup.string()
+          .min(5, "Must be 5 characters")
           .required("Required")
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+      onSubmit={async (data) => {
+        const tempData: any = data;
+        const formData = new FormData();
 
-          setSubmitting(false);
-        }, 400);
+        for (var key in tempData) {
+          formData.append(key, tempData[key]);
+        }
+
+        let response = await fetch("http://109.194.37.212:93/api/auth/login", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          },
+          credentials: "same-origin"
+        });
       }}
     >
-      {({
-        handleSubmit,
-        handleChange,
-        values,
-        touched,
-        errors,
-        isValid,
-        dirty
-      }) => (
+      {({ handleSubmit, handleChange, values, touched, errors }) => (
         <form className="form" onSubmit={handleSubmit}>
           <div className="form__input">
             <InputFull
               type="text"
               placeholder="Input user name"
               text="User name"
-              name="name"
-              value={values.name}
+              name="login"
+              value={values.login}
               onChange={handleChange}
             />
-            {touched.name && errors.name ? (
-              <div className="form__error">{errors.name}</div>
+            {touched.login && errors.login ? (
+              <div className="form__error">{errors.login}</div>
             ) : null}
           </div>
 
@@ -81,7 +101,38 @@ export const Form: React.FC = ({}) => {
               <div className="form__error">{errors.password}</div>
             ) : null}
           </div>
-          <Button buttonText="Log In" className="form__button" type="submit" />
+
+          <div className="form__input">
+            <SecurityCode
+              name="captcha"
+              value={values.captcha}
+              onChange={handleChange}
+              imgLink={captcha}
+              onClick={() => {
+                setTrigger(trigger + 1);
+              }}
+            />
+            {touched.captcha && errors.captcha ? (
+              <div className="form__error">{errors.captcha}</div>
+            ) : null}
+          </div>
+
+          <div className="form__buttons">
+            <Button
+              buttonText="Log In"
+              className="form__button"
+              type="submit"
+            />
+            <Button
+              buttonText="Registration"
+              className="form__button"
+              type="button"
+              onClick={(event) => {
+                relocate(event);
+              }}
+              secondary="true"
+            />
+          </div>
         </form>
       )}
     </Formik>

@@ -11,5 +11,7 @@ export const ButtonRefresh: React.FC<IButtonRefresh> = ({
   onClick
 }) => {
   let classNames = cn("button-refresh", className);
-  return <button type="button" onClick={onClick}></button>;
+  return (
+    <button type="button" onClick={onClick} className={classNames}></button>
+  );
 };

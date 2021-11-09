@@ -22,16 +22,17 @@ export const SecurityCode: React.FC<ISecurityCode> = ({
   return (
     <div className="security-code">
       <InputFull
-        className="security-code__input"
+        className="security-code__input-full"
         placeholder="Security code"
         type="text"
         text="Security code"
         name={name}
         value={value}
         onChange={onChange}
+        classNameField="security-code__input"
       />
-      <Captcha imgLink={imgLink} />
-      <ButtonRefresh onClick={onClick} />
+      <Captcha imgLink={imgLink} className="security-code__captcha" />
+      <ButtonRefresh onClick={onClick} className="security-code__refresh" />
     </div>
   );
 };

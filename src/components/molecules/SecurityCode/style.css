@@ -1,3 +1,18 @@
 .security-code {
   display: flex;
+  position: relative;
+  align-items: end;
+  width: 354px;
+}
+.security-code__input {
+  width: 171px;
+}
+
+.security-code__refresh {
+  position: absolute;
+  right: -30px;
+  bottom: 20px;
+}
+.security-code__input-full {
+  margin-right: 12px;
 }

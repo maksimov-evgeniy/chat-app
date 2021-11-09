@@ -19,6 +19,13 @@ interface Values {
 }
 
 export const FormSignUp: React.FC = () => {
+  let history: any = useHistory();
+
+  function relocate(event: any) {
+    event.preventDefault();
+    return history.push("/login");
+  }
+
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
@@ -49,15 +56,6 @@ export const FormSignUp: React.FC = () => {
     };
     getCaptha();
   }, [trigger]);
-
-  //let history: any = useHistory();
-
-  // let isValid: boolean = true; // предположим, что форма валидна
-
-  // function myRed(event: React.FormEvent<HTMLFormElement>) {
-  //   event.preventDefault();
-  //   return isValid ? history.push("/chat") : NaN;
-  // }
 
   return (
     <React.Fragment>
@@ -91,11 +89,11 @@ export const FormSignUp: React.FC = () => {
             .min(5, "Must be 5 characters")
             .required("Required")
         })}
-        onSubmit={async (value) => {
-          const tempData: any = value;
+        onSubmit={async (data) => {
+          const tempData: any = data;
           const formData = new FormData();
 
-          for (var key in value) {
+          for (var key in tempData) {
             formData.append(key, tempData[key]);
           }
 
@@ -191,6 +189,7 @@ export const FormSignUp: React.FC = () => {
                 <div className="form__error">{errors.gender_id}</div>
               ) : null}
             </div>
+
             <div className="form__input">
               <SecurityCode
                 name="captcha"
@@ -205,11 +204,22 @@ export const FormSignUp: React.FC = () => {
                 <div className="form__error">{errors.captcha}</div>
               ) : null}
             </div>
-            <Button
-              buttonText="Register"
-              className="form__button"
-              type="submit"
-            />
+            <div className="form__buttons">
+              <Button
+                buttonText="Register"
+                className="form__button"
+                type="submit"
+              />
+              <Button
+                buttonText="Log In"
+                className="form__button"
+                type="button"
+                onClick={(event) => {
+                  relocate(event);
+                }}
+                secondary="true"
+              />
+            </div>
           </form>
         )}
       </Formik>

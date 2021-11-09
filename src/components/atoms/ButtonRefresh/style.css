@@ -1,6 +1,11 @@
 .button-refresh {
   background: none;
   background-image: url("./refresh.svg");
-  width: 30px;
-  height: 30px;
+  background-position: center center;
+  background-size: contain;
+  width: 17px;
+  height: 17px;
+  appearance: none;
+  border: 0;
+  cursor: pointer;
 }

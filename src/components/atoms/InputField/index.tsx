@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from "react";
 import "./style.css";
+import cn from "classnames";
 
 interface IInputField {
   placeholder: string;
@@ -8,6 +9,7 @@ interface IInputField {
   onChange?(e: ChangeEvent<any>): void;
   onBlur?(e: ChangeEvent<any>): void;
   value?: string;
+  className?: string;
 }
 
 export const InputField: React.FC<IInputField> = ({
@@ -16,13 +18,15 @@ export const InputField: React.FC<IInputField> = ({
   onBlur,
   onChange,
   name,
-  value
+  value,
+  className
 }) => {
+  let classNames = cn("input-field", className);
   return (
     <input
       type={type}
       placeholder={placeholder}
-      className="input-field"
+      className={classNames}
       onChange={onChange}
       onBlur={onBlur}
       name={name}

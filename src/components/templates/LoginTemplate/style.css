@@ -27,9 +27,8 @@
 .form {
   margin: 0 auto;
 }
-@media (max-width: 1235px) {
-}
-@media (max-width: 930px) {
+
+@media (max-width: 1150px) {
   .welcome-text__title {
     font-size: 27px;
   }
@@ -44,8 +43,21 @@
     width: 348px;
     height: 48px;
   }
+  .form .security-code__input {
+    width: 170px;
+  }
+  .form .captcha {
+    width: 170px;
+    height: 48px;
+  }
+  .form .security-code__refresh {
+    width: 11px;
+    height: 11px;
+    right: 12px;
+    bottom: 18px;
+  }
 }
-@media (max-width: 750px) {
+@media (max-width: 910px) {
   .login-template__picture {
     border-radius: 0 0px 16px 16px;
   }
@@ -59,12 +71,26 @@
   }
   .form .form__button {
     width: 347px;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  .form__buttons {
+    display: flex;
+    flex-direction: column;
   }
   .login-template__wellcome-wrap {
     position: absolute;
-    top: -230px;
+    top: -190px;
   }
   .login-tamplate__login-inner {
     position: relative;
+  }
+  .login-template__picture {
+    flex-basis: 30%;
+    margin-bottom: 24px;
+  }
+  .login-template__login {
+    flex-basis: 70%;
+    justify-content: unset;
   }
 }

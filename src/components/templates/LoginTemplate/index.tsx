@@ -6,6 +6,7 @@ import { WelcomeText } from "../../molecules/WelcomeText";
 export const LoginTemplate: React.FC = (props) => {
   const child: (ReactChild | ReactFragment | ReactPortal)[] =
     React.Children.toArray(props.children);
+
   return (
     <React.Fragment>
       <div className="login-template">

@@ -9,6 +9,7 @@ interface IInputFull {
   placeholder: string;
   type: string;
   className?: string;
+  classNameField?: string;
   name?: string;
   onBlur?(e: ChangeEvent<any>): void;
   onChange?(e: ChangeEvent<any>): void;
@@ -23,7 +24,8 @@ export const InputFull: React.FC<IInputFull> = ({
   name,
   onBlur,
   onChange,
-  value
+  value,
+  classNameField
 }) => {
   let classNames = cn("input-full", className);
   return (
@@ -36,6 +38,7 @@ export const InputFull: React.FC<IInputFull> = ({
         onChange={onChange}
         onBlur={onBlur}
         value={value}
+        className={classNameField}
       />
     </div>
   );

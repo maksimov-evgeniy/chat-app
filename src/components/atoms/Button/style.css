@@ -1,5 +1,5 @@
 .button {
-  width: 233px;
+  width: 171px;
   height: 56px;
   background-color: #5c98f1;
   font-family: "montserrat";
@@ -22,4 +22,29 @@
 }
 .button__state--active {
   background-color: #2c6ac7;
+}
+
+.secondary {
+  width: 171px;
+  height: 56px;
+  background-color: #fff;
+  font-family: "montserrat";
+  font-size: 16px;
+  color: #5c98f1;
+  border-radius: 8px;
+  border: 1px solid #5c98f1;
+}
+
+.secondary:hover {
+  background-color: #f3f8ff;
+}
+
+.secondary:active {
+  background-color: #dfecff;
+}
+
+.secondary[disabled] {
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  color: #d1d1d1;
 }

@@ -8,4 +8,8 @@
 }
 .form__button {
   margin-top: 50px;
+  margin-right: 12px;
+}
+.form__buttons {
+  margin-top: 48px;
 }

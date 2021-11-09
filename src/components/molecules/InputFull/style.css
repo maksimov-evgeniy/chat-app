@@ -6,3 +6,6 @@
 .input-full__label {
   margin-bottom: 5px;
 }
+.error {
+  border: 1px solid #fb6262;
+}

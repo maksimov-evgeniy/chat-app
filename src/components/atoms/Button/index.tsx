@@ -4,12 +4,13 @@ import cn from "classnames";
 
 interface IButton {
   buttonText: string;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
   disabled?: boolean;
   active?: boolean;
   hover?: boolean;
   className?: string;
   type?: any;
+  secondary?: string;
 }
 
 export const Button: React.FC<IButton> = ({
@@ -19,14 +20,10 @@ export const Button: React.FC<IButton> = ({
   active,
   hover,
   className,
-  type
+  type,
+  secondary
 }) => {
-  let classNames = cn(
-    "button",
-    { "button__state--active": active },
-    { "button__state--hover": hover },
-    className
-  );
+  let classNames = cn("button", secondary ? "secondary" : "", className);
 
   return (
     <button

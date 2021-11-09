@@ -32,7 +32,7 @@ export const WelcomeText: React.FC<IWelcomeText> = ({
       <Typography
         type={subTitleType}
         text={subTitleText}
-        className={subTitleClass}
+        className="welcome-text__subtitle"
       />
     </div>
   );

@@ -1,0 +1,11 @@
+.captcha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 171px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid #b3cdf8;
+  outline: none;
+  color: #333333;
+}
