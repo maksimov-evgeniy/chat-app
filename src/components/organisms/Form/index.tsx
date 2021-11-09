@@ -31,7 +31,11 @@ export const Form: React.FC = ({}) => {
           "?t=" +
           new Date().getTime()
       );
-      setCaptcha(response.url);
+      if (response.ok) {
+        setCaptcha(response.url);
+      } else {
+        console.log(response.status);
+      }
     };
     getCaptha();
   }, [trigger]);
@@ -70,6 +74,10 @@ export const Form: React.FC = ({}) => {
           },
           credentials: "same-origin"
         });
+        if (response.ok) {
+          console.log(response);
+          return history.push("/chat");
+        }
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (

@@ -53,6 +53,7 @@ export const FormSignUp: React.FC = () => {
           new Date().getTime()
       );
       setCaptcha(response.url);
+      console.log(response.ok);
     };
     getCaptha();
   }, [trigger]);
